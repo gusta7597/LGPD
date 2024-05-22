@@ -1,0 +1,68 @@
+:root {
+    /* Font family */
+    --default-font: 'Roboto', sans-serif;
+    --alternative-font: 'Red Hat Display', sans-serif;
+
+    /* Font weights */
+    --fw-light: 100;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    /* Text font sizes */
+    --fs-txt-xsmall: 0.8rem; 
+    --fs-txt-small: 0.9rem;
+    --fs-txt-regular: 1rem;
+    --fs-txt-medium: 1.15rem;
+    --fs-txt-large: 1.3rem;
+
+    /* Header font sizes */
+    --fs-hd-large: ;
+
+    /* Border radius */
+    --br-default: 4px;
+    --br-medium: 16px;
+    --br-full: 100%;
+
+    /* Padding */
+    --p-input: 8px 12px;
+    --p-button: 8px 10px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --base-ntrl-min: 255, 255, 255;
+        --base-ntrl-max: 0, 0, 0;
+
+        --base-clr: 255, 255, 255;
+        --base-clr-lt: 217, 217, 217;
+        --base-clr-ltr: 237, 241, 246;
+
+        --primary-clr: 6, 0, 71;
+        --secondary-clr: 243, 110, 41;
+
+        --success-clr: 119, 221, 119;
+        --error-clr: 255, 105, 97;
+        --warning-clr: 253, 253, 150;
+        --info-clr: 61, 66, 107;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --base-ntrl-min: 255, 255, 255;
+        --base-ntrl-max: 0, 0, 0;
+
+        --base-clr: 255, 255, 255;
+        --base-clr-lt: 237, 241, 246;
+        --base-clr-ltr: 217, 217, 217;
+
+        --primary-clr: 6, 0, 71;
+        --secondary-clr: 243, 110, 41;
+
+        --success-clr: 119, 221, 119;
+        --error-clr: 255, 105, 97;
+        --warning-clr: 253, 253, 150;
+        --info-clr: 61, 66, 107;
+    }
+}

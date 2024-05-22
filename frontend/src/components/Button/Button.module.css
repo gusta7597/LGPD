@@ -1,0 +1,30 @@
+.loginButton {
+    width: 100%;
+    padding-block: 10px;
+    background-color: rgba(var(--primary-clr), 1);
+    border-radius: var(--br-default);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-txt-small);
+    transition: filter .1s linear;
+}
+
+.logout {
+    display: flex;
+    gap: 10px;
+    color: rgba(var(--base-ntrl-min), 1);
+    background-color: rgba(var(--primary-clr), 1);
+    padding: var(--p-button);
+    font-weight: var(--fw-bold);
+    border-radius: var(--br-default);
+    margin-top: auto;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+  
+button:hover {
+    filter: brightness(.7);
+}

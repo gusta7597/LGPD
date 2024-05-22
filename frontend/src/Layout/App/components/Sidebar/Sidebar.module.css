@@ -1,0 +1,65 @@
+.sidebarWrapper {
+    position: sticky;
+    top: 0; left: 0;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(var(--base-clr), 1);
+    border-top-right-radius: 16px;
+}
+
+.division {
+    margin-block: 15px;
+    color: rgba(var(--base-clr-ltr), .5);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url("../../../../assets/doodleAvatar.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-color: rgba(var(--primary-clr), 1);
+    border-radius: var(--br-full);
+}
+
+.fullname {
+    font-size: var(--fs-txt-regular);
+    font-weight: var(--fw-bold);
+}
+
+.profileName {
+    font-size: var(--fs-txt-small);
+}
+
+.mainHeader{
+    grid-area: 'mainheader';
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 20px;
+}
+
+.logoVisiona{
+    width: 26px;
+    height: auto;
+}

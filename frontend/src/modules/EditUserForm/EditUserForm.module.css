@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding: 1.5rem;
+}
+
+.line {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tipoDoUsuario {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.tipoDoUsuario > select {
+  width: 350px;
+  padding: var(--p-input);
+  font-size: var(--fs-txt-regular);
+  border-radius: var(--br-default);
+  border: 2px solid rgba(var(--base-clr-lt), 1);
+  background-color: rgba(var(--base-ntrl-min), 1);
+  outline: none;
+}
+
+.button {
+  width: 350px;
+  padding: var(--p-button);
+  background-color: rgba(var(--primary-clr), 1);
+  color: rgba(var(--base-ntrl-min), 1);
+  font-weight: var(--fw-bold);
+  border-radius: var(--br-default);
+}

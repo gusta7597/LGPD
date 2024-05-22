@@ -1,0 +1,43 @@
+.tag {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--br-medium);
+}
+
+.tag *::before {
+    content: "";
+    width: 6px; height: 6px;
+    position: absolute;
+    top: 50%; left: 15%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--br-full);
+    background-color: var(--l-color);
+}
+
+.tag > p {
+    font-size: var(--fs-txt-small);
+    font-weight: var(--fw-bold);
+}
+
+.tag.success {
+    --l-background: rgba(var(--success-clr), .3);
+    --l-color: rgba(var(--success-clr), 1);
+    background-color: var(--l-background);
+    border: 1px solid var(--l-color);
+}
+
+.tag.success > p {
+    color: var(--l-color);
+}
+
+.tag.error {
+    --l-background: rgba(var(--error-clr), .3);
+    --l-color: rgba(var(--error-clr), 1);
+    background-color: var(--l-background);
+    border: 1px solid var(--l-color);
+}
+
+.tag.error > p {
+    color: var(--l-color);
+}

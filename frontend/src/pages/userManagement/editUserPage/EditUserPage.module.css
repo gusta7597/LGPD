@@ -1,0 +1,5 @@
+.container {
+    margin-top: 2rem;
+    background: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+}

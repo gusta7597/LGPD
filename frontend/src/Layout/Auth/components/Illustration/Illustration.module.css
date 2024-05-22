@@ -1,0 +1,9 @@
+.illustration {
+    grid-area: 1 / 2 / 3 / 2;
+    width: 50vw;
+    height: 100vh;
+    background-image: url("../../../../assets/Illustration.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

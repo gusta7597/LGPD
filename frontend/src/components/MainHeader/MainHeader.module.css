@@ -1,0 +1,10 @@
+.mainHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: rgba(var(--base-ntrl-min), 1);
+}
+
+.mainHeader > h1 {
+    font-weight: var(--fw-medium);
+}

@@ -1,0 +1,39 @@
+.chart {
+    background: rgba(var(--base-ntrl-min), 1);
+    padding: 3rem;
+    margin-top: 2rem;
+    border-radius: var(--br-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.chartArea {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "userLineChart userLineChart userChart"
+    "userLineChart userLineChart card"
+    ;
+    width: 100%;
+    gap: 2rem;
+}
+
+.userChart {
+    grid-area: userChart;
+
+}
+
+.userLineChart {
+    grid-area: userLineChart;
+}
+
+.chartTotalUsers {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    white-space: pre-wrap;
+    line-height: 2;
+}

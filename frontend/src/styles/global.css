@@ -1,0 +1,138 @@
+@import "./fonts.css";
+@import "./variables.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: var(--alternative-font);
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* SaltyAlert CSS */
+.saal-backdrop {
+    width: 100%; height: 100%;
+    background-color: rgba(var(--base-ntrl-max), .3);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.saal-backdrop.opening { animation: showBackdrop .1s linear forwards; }
+.saal-backdrop.removing { animation: removeBackdrop .1s linear forwards; }
+
+.saal.modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: var(--br-default);
+    background-color: rgba(var(--base-ntrl-min), 1);
+}
+
+.saal-toastBar {
+    pointer-events: none;
+    position: fixed;
+    right: 0; bottom: 0;
+    width: auto; height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+}
+
+.saal.toast {
+    pointer-events: all;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 5px;
+    background-color: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+    border-left: 3px solid;
+    box-shadow: 0 0 8px rgba(var(--base-ntrl-max), .15);
+}
+
+.saal.toast.success { border-color: rgba(var(--success-clr), 1); }
+.saal.toast.warning { border-color: rgba(var(--warning-clr), 1); }
+.saal.toast.error { border-color: rgba(var(--error-clr), 1); }
+.saal.toast.info { border-color: rgba(var(--info-clr), 1); }
+
+.saal.toast.opening { animation: showSaltyAlertToast .1s linear forwards; }
+.saal.toast.removing { animation: removeSaltyAlertToast .1s linear forwards; }
+.saal.modal.opening { animation: showSaltyAlertModal .1s linear forwards; }
+.saal.modal.removing { animation: removeSaltyAlertModal .1s linear forwards; }
+
+.saal-textContent { text-align: center; }
+.saal-maincontent { display: flex; align-items: center; gap: 5px; }
+
+.saal-modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; right: 0;
+    width: 24px; height: 24px;
+    margin: 5px;
+    border-radius: var(--br-full);
+    transition: background-color .1s linear;
+    cursor: pointer;
+}
+
+.saal-toast-close {
+    width: 24px; height: 24px;
+    border-radius: var(--br-full);
+    cursor: pointer;
+}
+
+.saal-toast-icon { display: block; padding: 10px; width: 50px; height: 50px; }
+.saal-toast-icon > svg { width: 100%; height: 100%; }
+
+.saal-actions { display: flex; align-self: center; gap: 10px; }
+.saal-button { padding: var(--p-button); border-radius: var(--br-default); }
+
+.saal-button.success {
+    background-color: rgba(var(--success-clr), .9);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+}
+
+.saal-button.cancel {
+    background-color: rgba(var(--error-clr), .9);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+}
+
+.saal-modal-close:hover, .saal-toast-close:hover { background-color: rgba(var(--base-clr-ltr), 1); }
+
+@keyframes showBackdrop { from { opacity: 0; } to { opacity: 1; } }
+@keyframes removeBackdrop { from { opacity: 1; } to { opacity: 0; } }
+
+@keyframes showSaltyAlertModal {
+    from { transform: translate(-50%, -50%) scale(.9); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes removeSaltyAlertModal {
+    from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    to { transform: translate(-50%, -50%) scale(.9); opacity: 0; }
+}
+
+@keyframes showSaltyAlertToast { from { left: 15px; opacity: 0; } to { left: 0; opacity: 1; } }
+@keyframes removeSaltyAlertToast { from { left: 0; opacity: 1; } to { left: 15px; opacity: 0; } }

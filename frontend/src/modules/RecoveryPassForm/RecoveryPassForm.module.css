@@ -1,0 +1,14 @@
+.recoveryform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recoveryform h2 {
+    font-weight: var(--fw-medium);
+}
+
+.recoverySubTitles {
+    color: rgba(var(--secondary-clr), 1);
+    font-size: var(--fs-txt-regular);
+}    

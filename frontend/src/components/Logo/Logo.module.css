@@ -1,0 +1,24 @@
+.logo {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.picture {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.small {
+    height: 25px;
+    width: 125px;
+}
+
+.medium {
+    height: 40px;
+    width: 200px;
+}
+
+.big {
+    height: 80px;
+    width: 400px;
+}

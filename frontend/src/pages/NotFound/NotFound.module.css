@@ -1,0 +1,45 @@
+.logoContainer {
+  margin-bottom: 1rem;
+}
+
+.notFound_content {
+  display: flex;
+  align-items: center;
+  max-width: 100rem;
+  margin-left: 15rem;
+}
+
+.notFound_column {
+  display: inline-block;
+  text-align: center;
+}
+
+.notFound_image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  scale: 60%;
+}
+
+.notFound_title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.notFound_text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 886px) {
+  .notFound_image{
+    scale: 0%;
+  }
+
+  .notFound_content{
+    display: block;
+    justify-items: center;
+    margin-left: 1rem;
+    margin-top: 10rem;
+  }
+}

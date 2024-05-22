@@ -1,0 +1,5 @@
+.recoveryLink, .returnLoginLink {
+    font-size: var(--fs-txt-small);
+    margin-left: auto;
+    color: rgba(var(--base-ntrl-max), 1);
+}

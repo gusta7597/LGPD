@@ -1,0 +1,19 @@
+.sidebarItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: var(--p-button);
+    border-radius: var(--br-default);
+    font-size: var(--fs-txt-regular);
+    color: rgba(var(--base-ntrl-max), 1);
+    text-decoration: none;
+    transition: background-color .1s linear;
+}
+
+.sidebarItem:hover {
+    background-color: rgba(var(--base-clr-ltr), 1);
+}
+
+.icon {
+    font-size: var(--fs-txt-small);
+}

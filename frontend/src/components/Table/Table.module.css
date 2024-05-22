@@ -1,0 +1,49 @@
+table {
+    width: 100%;
+    background-color: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+}
+
+thead {
+    background-color: rgba(var(--base-clr-ltr), 1);
+    text-align: left;
+}
+
+td, th {
+    padding: 8px 15px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(var(--base-clr-ltr), 1);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.actions > * {
+    width: 24px; height: 24px;
+    padding: 5px;
+    border-radius: var(--br-full);
+    overflow: visible;
+    cursor: pointer;
+    transition: background-color .1s linear;
+}
+
+.actions > *:hover {
+    background-color: rgba(var(--base-ntrl-max), .3);
+}
+
+.warning {
+    display: block;
+    text-align: center;
+}
+
+.warning > span {
+    padding: 12px 8px;
+    background-color: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+    box-shadow: 0 0 16px rgba(var(--base-ntrl-max), .3);
+}

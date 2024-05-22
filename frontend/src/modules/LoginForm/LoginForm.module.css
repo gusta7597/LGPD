@@ -1,0 +1,14 @@
+.loginform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.loginform h2 {
+    font-weight: var(--fw-medium);
+}
+
+.loginSubTitles {
+    color: rgba(var(--secondary-clr), 1);
+    font-size: var(--fs-txt-regular);
+}

@@ -1,0 +1,39 @@
+.options {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+
+.editBtn {
+    padding: var(--p-button);
+    border-radius: var(--br-default);
+    border: 2px solid rgba(var(--base-ntrl-min), 1);
+    background-color: rgba(var(--base-ntrl-min), .3);
+    color: rgba(var(--base-ntrl-min), 1);
+    font-weight: var(--fw-bold);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.container {
+    background: rgba(var(--base-ntrl-min), 1);
+    border-radius: var(--br-default);
+    padding: 2rem;
+}
+
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.gridContainer > div {
+    min-width: 300px;
+}
+
+.gridContainer > div div:first-child {
+    font-weight: var(--fw-bold);
+}

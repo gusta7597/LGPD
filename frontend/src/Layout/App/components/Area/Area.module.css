@@ -1,0 +1,12 @@
+.area {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    text-transform: uppercase;
+    color: rgba(var(--base-ntrl-max), 1);
+    font-size: var(--fs-txt-xsmall);
+    font-weight: var(--fw-regular);
+    margin-block: 5px;
+}
