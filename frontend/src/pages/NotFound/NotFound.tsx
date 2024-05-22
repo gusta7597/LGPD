@@ -8,16 +8,16 @@ class NotFound extends Component {
   render() {
     return (
       <div>
-        <div className={Styles.logoContainer}>
+        {/* <div className={Styles.logoContainer}>
           <Logo size="small" />
-        </div>
+        </div> */}
         <div className={Styles.notFound_content}>
           <div className={Styles.notFound_column}>
             <h1 className={Styles.notFound_title}>Página não encontrada</h1>
             <p className={Styles.notFound_text}>
               Desculpe, a página que você está procurando não existe.
             </p>
-            <Link newPath="/" text="Voltar a tela inicial" className="notFoundLink"/>
+            <Link newPath="/listUser" text="Voltar a tela inicial" className="notFoundLink"/>
           </div>
           <div className={Styles.notFound_image}>
             <img src={ Picture } alt="IMG" />

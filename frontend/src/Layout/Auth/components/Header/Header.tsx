@@ -6,7 +6,7 @@ class Header extends Component {
     render () {
         return (
             <header className={ styles.header }>
-                <Logo size="small" />
+                {/* <Logo size="small" /> */}
             </header>
         )
     }

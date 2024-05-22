@@ -24,7 +24,7 @@ class LogonPage extends Component<LogOnPageProp, LogonPageState> {
             if (session.profile.type !== 1) {
                 window.open('/initialuser', '_self');
             } else {
-                window.open('/', '_self');
+                window.open('/listUser', '_self');
             }
         } else {
             new SaltyAlert().toast({
