@@ -19,10 +19,10 @@ class Sidebar extends React.Component {
 
         return (
             <aside className={ styles.sidebarWrapper }>
-                <section className={ styles.mainHeader }>
+                {/* <section className={ styles.mainHeader }>
                     <img className={ styles.logoVisiona } src={ logo } alt='logo'/>
                     <img className={ styles.visiona } src={ visiona } alt='visiona'/>
-                </section>
+                </section> */}
                 <section className={ styles.sidebar }>
                     <div className={ styles.profile }>
                         <span className={ styles.image }></span>
@@ -32,10 +32,10 @@ class Sidebar extends React.Component {
                         </div>
                     </div>
                     <hr className={ styles.division } />
-                    <Area allowedProfiles={ null } label="Navegação">
+                    {/* <Area allowedProfiles={ null } label="Navegação">
                         <SidebarItem to={ '/' } label="Dashboard" icon="home" allowedProfiles={[ 1 ]} />
                         <SidebarItem to={ '/initialUser' } label="Painel do usuário" icon="home" allowedProfiles={[ 0 ]} />
-                    </Area>
+                    </Area> */}
                     <Area allowedProfiles={[ 1 ]} label="Gerenciamento">
                         <SidebarItem to={ '/listUser' } label="Usuários" icon="user" allowedProfiles={[ 1 ]} />
                     </Area>
