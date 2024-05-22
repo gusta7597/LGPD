@@ -44,7 +44,14 @@ export default class SendSecurityEmailUC {
         from: `${process.env.SEND_EMAIL_USER}`,
         to: email,
         subject: 'Alerta de Segurança',
-        text: 'Nosso sistema foi atacado',
+        text: `
+        Caro(a) cliente,
+
+        Esperamos que esta mensagem o encontre bem.
+
+        Gostaríamos de informá-lo sobre um incidente de segurança que ocorreu recentemente em nosso sistema. Infelizmente, identificamos que nosso sistema foi invadido e, como resultado, seus dados pessoais podem estar expostos.
+        
+        Tenha um bom dia.`,
       };
 
       const result = await transporter.sendMail(mailOptions);
