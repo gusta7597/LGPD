@@ -13,7 +13,8 @@ export default function CheckToken (request: Request, response: Response, next: 
         '/createTermAcceptance',
         '/findAllTerms',
         '/findAllTermsAcceptance',
-        '/getAll'
+        '/getAll',
+        '/findTermAcceptanceByUser'
     ];
 
     if (publicPaths.includes(request.path)) return next();

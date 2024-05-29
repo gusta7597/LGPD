@@ -6,4 +6,5 @@ export default interface ITermRepository {
     findAllTerms() : Promise<Terms[]>
     saveTermAcceptance(termAcceptance: TermAcceptance): Promise<TermAcceptance>
     findAllTermAcceptance(): Promise<TermAcceptance[]>
+    findTermAcceptanceByUser(userId : number): Promise<TermAcceptance | null>
 }

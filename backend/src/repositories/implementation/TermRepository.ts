@@ -19,9 +19,12 @@ export default class TermRepository implements ITermRepository {
     termsId: termAcceptance.termsId,
     acceptedAt: new Date()
     });
-}
+  }
   findAllTermAcceptance(): Promise<TermAcceptance[]> {
     return TermAcceptance.findAll();
-}
+  }
 
+  findTermAcceptanceByUser(userId: number): Promise<TermAcceptance | null> {
+    return TermAcceptance.findOne({ where: { userId: userId } });
+  }
 }

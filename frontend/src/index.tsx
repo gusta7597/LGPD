@@ -11,6 +11,7 @@ import RecoveryPassPage from './pages/recoveryPass/RecoveryPassPage';
 import InitialUser from './pages/initialuser/InitialUser'
 import EditUserPage from './pages/userManagement/editUserPage/EditUserPage';
 import Dashboard from './pages/dashboard/Dashboard';
+import TermPage from './pages/terms/termPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,6 +27,7 @@ root.render(
             <Route path='/createUser' element={ <App /> }>
                 <Route index path="/createUser" element={ <CreateUserForm /> } />
             </Route>
+
             <Route path='/editUser' element={ <App /> }>
                 <Route index path="/editUser" element={ <EditUserPage/> } />
             </Route>
@@ -35,6 +37,9 @@ root.render(
             <Route path='/auth/' element={ <Auth /> }>
                 <Route path="login" element={ <LogonPage /> } />
                 <Route path="recovery" element={ <RecoveryPassPage /> } />
+            </Route>
+            <Route path='/terms' element={ <App /> }>
+                <Route index path="/terms" element={ <TermPage /> } />
             </Route>
             <Route path="*" element={ <NotFound /> } />
         </Routes>

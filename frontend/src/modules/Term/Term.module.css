@@ -1,0 +1,40 @@
+/* Estilos para o container do componente */
+.terms_container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para os termos */
+  .term {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para o botão */
+  .accept_button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .accept_button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para o parágrafo de termos aceitos */
+  .accepted_terms {
+    color: green;
+  }
+  
+  /* Estilos para os checkboxes */
+  .checkbox_input {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
