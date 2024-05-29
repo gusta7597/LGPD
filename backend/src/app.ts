@@ -6,6 +6,7 @@ import UserRoutes from './routes/UserRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 import cors from 'cors';
 import CheckToken from './routes/utils/CheckToken';
+import TermRoutes from './routes/TermRoutes'
 
 export const app = express();
 
@@ -19,6 +20,7 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/user', CheckToken, UserRoutes);
 app.use('/auth', CheckToken, AuthRoutes);
+app.use('/term', CheckToken, TermRoutes);
 
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.status(500).json({ message: err.message });

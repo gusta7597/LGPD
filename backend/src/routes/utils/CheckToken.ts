@@ -8,7 +8,12 @@ export default function CheckToken (request: Request, response: Response, next: 
         // '/createUser',
         '/updatePassword',
         '/sendSecurityEmail',
-        '/recovery'
+        '/recovery',
+        '/createTerm',
+        '/createTermAcceptance',
+        '/findAllTerms',
+        '/findAllTermsAcceptance',
+        '/getAll'
     ];
 
     if (publicPaths.includes(request.path)) return next();

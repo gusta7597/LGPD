@@ -3,6 +3,8 @@ import User from "../model/User";
 import Profile from "../model/Profile";
 
 import * as dotenv from "dotenv";
+import TermAcceptance from "../model/TermAcceptance";
+import Terms from "../model/Terms";
 
 dotenv.config();
 
@@ -14,7 +16,7 @@ const connection = new Sequelize(
         dialect: "postgres",
         host: `${process.env.POSTGRES_HOST}`,
         port: 5432,
-        models: [ User, Profile ]
+        models: [ User, Profile, TermAcceptance, Terms ]
     }
 )
 
