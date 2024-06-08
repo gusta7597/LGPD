@@ -5,6 +5,8 @@
 **/.pnp
 **.pnp.js
 */out
+**/scripts/.venv
+**/scripts/logs
 
 # testing
 **/coverage
