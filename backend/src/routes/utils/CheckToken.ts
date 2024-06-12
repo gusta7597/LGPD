@@ -4,7 +4,7 @@ import TokenService from "../../services/TokenService";
 export default function CheckToken (request: Request, response: Response, next: NextFunction) {
     const publicPaths = [
         '/login',
-        // '/createAdmin',
+        '/createAdmin',
         // '/createUser',
         '/updatePassword',
         '/sendSecurityEmail',

@@ -43,7 +43,6 @@ const TermsComponent: React.FC = () => {
 
   const handleAcceptTerms = async () => {
     const teste = await TermService.deactivateAcceptance(idUser);
-    console.log(teste)
     acceptedTerms.forEach(async termId => {
       console.log(termId)
       await TermService.createTermAcceptance(termId,idUser)
@@ -51,10 +50,19 @@ const TermsComponent: React.FC = () => {
     window.location.href = "/";
   };
 
+  
+  const revogeTerms = async () => {
+    await TermService.deactivateAcceptance(idUser);
+    window.localStorage.removeItem("session_token");
+    window.open("/auth/login", "_self");
+  };
+
   return (
     // <form onSubmit={ handleAcceptTerms }>
     <div className={Style.terms_container}>
       <h2>Termos de Serviço</h2>
+      <h4>Aceite os termos de serviço para utilizar nossa aplicação</h4>
+      <h5>Caso queira revogar todos os termos aceitos basta clicar no botão "Revogar termos"</h5>
       {terms.map(term => (
         <div key={term.id} className={Style.term}>
           <input
@@ -67,8 +75,8 @@ const TermsComponent: React.FC = () => {
           <label htmlFor={`term-${term.id}`}>{term.content}</label>
         </div>
       ))}
-
         <button className={Style.accept_button} onClick={handleAcceptTerms}>Aceitar Termos</button>
+        <div><button className={Style.accept_button} onClick={revogeTerms}>Revogar termos</button></div>
         
     </div>
     // </form>
