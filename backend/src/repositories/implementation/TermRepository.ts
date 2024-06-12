@@ -14,10 +14,10 @@ export default class TermRepository implements ITermRepository {
   findAllTerms(): Promise<Terms[]> {
     return Terms.findAll();
   }
-  async saveTermAcceptance(termAcceptance: TermAcceptance): Promise<TermAcceptance> {
+  async saveTermAcceptance(termId: number, userId: number): Promise<TermAcceptance> {
     return TermAcceptance.create({
-    userId: termAcceptance.userId,
-    termsId: termAcceptance.termsId,
+    userId: userId,
+    termsId: termId,
     acceptedAt: new Date(),
     effective: true
     });

@@ -22,7 +22,7 @@ router.get('/findAllTermsAcceptance', (request: Request, response: Response) => 
 router.get('/findTermAcceptanceByUser', (request: Request, response: Response) => {
     return findTermAcceptanceByUser.findTermAcceptanceByUser(request, response);
 });
-router.put('/deactivateAcceptance', (request: Request, response: Response) => {
+router.post('/deactivateAcceptance', (request: Request, response: Response) => {
     return deactivateAcceptance.deactivateAcceptance(request, response);
 });
 

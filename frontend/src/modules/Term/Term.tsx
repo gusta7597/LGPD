@@ -16,6 +16,7 @@ const TermsComponent: React.FC = () => {
       try {
         const response = await TermService.findAllTerms();
         setTerms(response.data);
+        console.log('teupai')
       } catch (error) {
         console.error('Error fetching terms:', error);
       }
@@ -26,27 +27,32 @@ const TermsComponent: React.FC = () => {
 
   const handleAcceptTerm = (termId: number) => {
     const newAcceptedTerms = new Set(acceptedTerms);
+    
     if (newAcceptedTerms.has(termId)) {
       newAcceptedTerms.delete(termId);
     } else {
       newAcceptedTerms.add(termId);
+      
     }
+    
     setAcceptedTerms(newAcceptedTerms);
+    console.log(newAcceptedTerms)
   };
 
   const allTermsAccepted = terms.every(term => acceptedTerms.has(term.id));
 
   const handleAcceptTerms = async () => {
-    console.log(acceptedTerms,'pau')
-    const response = await TermService.deactivateAcceptance(idUser);
+    const teste = await TermService.deactivateAcceptance(idUser);
+    console.log(teste)
     acceptedTerms.forEach(async termId => {
-      const teste = new TermAcceptance(new Date(),idUser,termId,true, new Date())
-      await TermService.createTermAcceptance(teste)
+      console.log(termId)
+      await TermService.createTermAcceptance(termId,idUser)
     })
-    console.log('Termos aceitos:', acceptedTerms);
+    window.location.href = "/";
   };
 
   return (
+    // <form onSubmit={ handleAcceptTerms }>
     <div className={Style.terms_container}>
       <h2>Termos de Serviço</h2>
       {terms.map(term => (
@@ -62,11 +68,10 @@ const TermsComponent: React.FC = () => {
         </div>
       ))}
 
-        <button className={Style.accept_button} onClick={handleAcceptTerms}>
-          Aceitar Termos
-        </button>
-
+        <button className={Style.accept_button} onClick={handleAcceptTerms}>Aceitar Termos</button>
+        
     </div>
+    // </form>
   );
 };
 

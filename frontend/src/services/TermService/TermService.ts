@@ -63,9 +63,10 @@ export default class TermService {
       return response;
     }
   }
-  public static async createTermAcceptance(termAcceptance: TermAcceptance): Promise<boolean> {
+  public static async createTermAcceptance(termId:number, userId: number): Promise<boolean> {
+    const requestBody = { termId: termId, userId:userId  };
     try {
-      const response = await DataServiceAPI.post('http://localhost:3000/term/createTermAcceptance', termAcceptance);
+      const response = await DataServiceAPI.post('http://localhost:3000/term/createTermAcceptance', requestBody);
 
       if (response.ok) {
         return true;
@@ -102,10 +103,10 @@ export default class TermService {
   }  
   public static async deactivateAcceptance(userId: number): Promise<CountResponse> {
 
-    const requestBody = { id: userId };
+    const requestBody = { userId: userId };
 
     try {
-      const response = await DataServiceAPI.get('http://localhost:3000/term/findTermAcceptanceByUser', requestBody);
+      const response = await DataServiceAPI.post('http://localhost:3000/term/deactivateAcceptance', requestBody);
 
       const responseJson = await response.json();
 

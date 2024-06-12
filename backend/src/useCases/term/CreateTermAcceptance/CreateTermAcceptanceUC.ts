@@ -8,8 +8,6 @@ export default class CreateTermAcceptanceUC {
     ) {}
 
     async execute(props: ICreateTermAcceptanceDTO) {
-
-        const terms = new TermAcceptance({ ...props });
-        await this.termRepository.saveTermAcceptance(terms);
+        await this.termRepository.saveTermAcceptance(props.termId, props.userId);
     }
 }

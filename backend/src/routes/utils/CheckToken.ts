@@ -14,7 +14,8 @@ export default function CheckToken (request: Request, response: Response, next: 
         '/findAllTerms',
         '/findAllTermsAcceptance',
         '/getAll',
-        '/findTermAcceptanceByUser'
+        '/findTermAcceptanceByUser',
+        '/deactivateAcceptance'
     ];
 
     if (publicPaths.includes(request.path)) return next();
