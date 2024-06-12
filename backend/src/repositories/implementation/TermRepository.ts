@@ -4,8 +4,9 @@ import TermAcceptance from "../../model/TermAcceptance";
 
 export default class TermRepository implements ITermRepository {
   // create user
-  saveTerm(terms: Terms): Promise<Terms> {
-        return Terms.create({
+  async saveTerm(terms: Terms): Promise<Terms> {
+    await TermAcceptance.update({effective:false, effectiveUntil: new Date()}, {where:{}})    
+    return Terms.create({
         content: terms.content,
         effectiveDate: terms.effectiveDate,
         });
@@ -13,11 +14,12 @@ export default class TermRepository implements ITermRepository {
   findAllTerms(): Promise<Terms[]> {
     return Terms.findAll();
   }
-  saveTermAcceptance(termAcceptance: TermAcceptance): Promise<TermAcceptance> {
+  async saveTermAcceptance(termAcceptance: TermAcceptance): Promise<TermAcceptance> {
     return TermAcceptance.create({
     userId: termAcceptance.userId,
     termsId: termAcceptance.termsId,
-    acceptedAt: new Date()
+    acceptedAt: new Date(),
+    effective: true
     });
   }
   findAllTermAcceptance(): Promise<TermAcceptance[]> {
@@ -25,6 +27,11 @@ export default class TermRepository implements ITermRepository {
   }
 
   findTermAcceptanceByUser(userId: number): Promise<TermAcceptance | null> {
-    return TermAcceptance.findOne({ where: { userId: userId } });
+    return TermAcceptance.findOne({ where: { userId: userId, effective:true } });
+  }
+
+  async deactivateAcceptance(userId:number): Promise<Number>{
+    const response = await TermAcceptance.update({effective:false, effectiveUntil: new Date()}, {where:{userId:userId}}) 
+    return response[0]
   }
 }

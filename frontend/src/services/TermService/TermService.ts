@@ -99,5 +99,26 @@ export default class TermService {
       };
       return response;
     }
+  }  
+  public static async deactivateAcceptance(userId: number): Promise<CountResponse> {
+
+    const requestBody = { id: userId };
+
+    try {
+      const response = await DataServiceAPI.get('http://localhost:3000/term/findTermAcceptanceByUser', requestBody);
+
+      const responseJson = await response.json();
+
+      const userResponse = { data: responseJson.Data, message: responseJson.message, ok: responseJson.Ok };
+
+      return userResponse;
+    } catch (error) {
+      const response: UserResponse = {
+        data: [],
+        message: `${error}`,
+        ok: false
+      };
+      return response;
+    }
   }
 }

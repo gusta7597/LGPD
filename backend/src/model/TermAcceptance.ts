@@ -18,6 +18,12 @@ export default class TermAcceptance extends Model {
     @Column({ type: DataType.DATE, allowNull: false })
     acceptedAt!: Date;
 
+    @Column({ type: DataType.BOOLEAN })
+    effective!: boolean;
+
+    @Column({ type: DataType.DATE })
+    effectiveUntil!: Date;
+
     @BelongsTo(() => User)
     user!: User;
 

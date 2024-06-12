@@ -4,6 +4,7 @@ import { findAllTerms } from "../useCases/term/FindAllTerms/FindAllTerms";
 import { createTermAcceptance } from "../useCases/term/CreateTermAcceptance/CreateTermAcceptance";
 import { findAllTermsAcceptance } from "../useCases/term/FindAllTermAcceptance/FindAllTermAcceptance";
 import { findTermAcceptanceByUser } from "../useCases/term/FindTermAcceptanceByUser/FindTermAcceptanceByUser";
+import { deactivateAcceptance } from "../useCases/term/DeactivateAcceptance/DeactivateAcceptance";
 const router = Router();
 
 router.post('/createTerm', (request: Request, response: Response) => {
@@ -20,6 +21,9 @@ router.get('/findAllTermsAcceptance', (request: Request, response: Response) => 
 });
 router.get('/findTermAcceptanceByUser', (request: Request, response: Response) => {
     return findTermAcceptanceByUser.findTermAcceptanceByUser(request, response);
+});
+router.put('/deactivateAcceptance', (request: Request, response: Response) => {
+    return deactivateAcceptance.deactivateAcceptance(request, response);
 });
 
 
