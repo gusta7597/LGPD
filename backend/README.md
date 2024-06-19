@@ -19,3 +19,21 @@
     "password": "123456",
     "active": "true"
 }
+### http://localhost:3000/term/createTerm
+{
+    {
+    "title": "Termo de Uso",
+    "description": "Este é o termo.",
+    "conditions": [
+        {
+            "conditionText": "O usuário ."
+        },
+        {
+            "conditionText": "O compartilhar sua senha com terceiros."
+        },
+        {
+            "conditionText": "O para fins ilegais."
+        }
+    ]
+}
+}
