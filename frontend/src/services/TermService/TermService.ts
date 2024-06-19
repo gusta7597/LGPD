@@ -28,7 +28,7 @@ export default class TermService {
     }
   }
 
-  public static async createTerm(term: Term): Promise<boolean> {
+  public static async createTerm(term: any): Promise<boolean> {
     try {
       const response = await DataServiceAPI.post('http://localhost:3000/term/createTerm', term);
 
@@ -63,8 +63,9 @@ export default class TermService {
       return response;
     }
   }
-  public static async createTermAcceptance(termId:number, userId: number): Promise<boolean> {
-    const requestBody = { termId: termId, userId:userId  };
+  public static async createTermAcceptance(termId: number, userId: number, accepted: boolean, conditionAcceptances: any[]): Promise<boolean> {
+    const requestBody = { termId: termId, userId:userId, accepted:accepted, conditionAcceptances:conditionAcceptances  };
+
     try {
       const response = await DataServiceAPI.post('http://localhost:3000/term/createTermAcceptance', requestBody);
 
@@ -122,4 +123,26 @@ export default class TermService {
       return response;
     }
   }
+
+  public static async findTermConditionByTerm(termId: number): Promise<CountResponse> {
+
+    const requestBody = { termId: termId };
+
+    try {
+      const response = await DataServiceAPI.post('http://localhost:3000/term/findTermConditionByTerm', requestBody);
+
+      const responseJson = await response.json();
+
+      const userResponse = { data: responseJson.Data, message: responseJson.message, ok: responseJson.Ok };
+
+      return userResponse;
+    } catch (error) {
+      const response: UserResponse = {
+        data: [],
+        message: `${error}`,
+        ok: false
+      };
+      return response;
+    }
+  }  
 }

@@ -1,32 +1,30 @@
-import { Model, Table, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
+import { Model, Table, Column, DataType, ForeignKey, BelongsTo, HasMany } from "sequelize-typescript";
+import Term from "./Terms";
 import User from "./User";
-import Terms from "./Terms";
+import TermConditionAcceptance from "./TermConditionAcceptance";
 
 @Table({ tableName: "TermAcceptance", timestamps: true })
 export default class TermAcceptance extends Model {
-    @Column({ type: DataType.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true })
+    @Column({ type: DataType.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true })
     id!: number;
 
     @ForeignKey(() => User)
     @Column({ type: DataType.INTEGER, allowNull: false })
     userId!: number;
 
-    @ForeignKey(() => Terms)
+    @ForeignKey(() => Term)
     @Column({ type: DataType.INTEGER, allowNull: false })
-    termsId!: number;
+    termId!: number;
 
-    @Column({ type: DataType.DATE, allowNull: false })
-    acceptedAt!: Date;
-
-    @Column({ type: DataType.BOOLEAN })
-    effective!: boolean;
-
-    @Column({ type: DataType.DATE })
-    effectiveUntil!: Date;
+    @Column({ type: DataType.BOOLEAN, allowNull: false })
+    accepted!: boolean;
 
     @BelongsTo(() => User)
     user!: User;
 
-    @BelongsTo(() => Terms)
-    terms!: Terms;
+    @BelongsTo(() => Term)
+    term!: Term;
+
+    @HasMany(() => TermConditionAcceptance)
+    conditionAcceptances!: TermConditionAcceptance[];
 }

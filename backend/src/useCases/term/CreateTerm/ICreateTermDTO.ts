@@ -1,4 +1,5 @@
 export default interface ICreateTermDTO {
-    content: string,
-    effectiveDate: Date
+    title: string;
+    description: string;
+    conditions: Array<{ conditionText: string }>;
 }
