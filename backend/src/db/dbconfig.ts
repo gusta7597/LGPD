@@ -29,7 +29,6 @@ import * as dotenv from "dotenv";
 import TermAcceptance from "../model/TermAcceptance";
 import Terms from "../model/Terms";
 import TermCondition from "../model/TermCondition";
-import TermConditionAcceptance from "../model/TermConditionAcceptance";
 
 dotenv.config();
 
@@ -50,7 +49,7 @@ const connection = new Sequelize(
     dialect: "postgres",
     host: `${process.env.POSTGRES_HOST}`,
     port: 5432,
-    models: [User, Profile, TermAcceptance, Terms, TermCondition, TermConditionAcceptance],
+    models: [User, Profile, TermAcceptance, Terms, TermCondition],
   }
 );
 

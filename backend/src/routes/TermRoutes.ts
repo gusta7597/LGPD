@@ -6,6 +6,8 @@ import { findAllTermsAcceptance } from "../useCases/term/FindAllTermAcceptance/F
 import { findTermAcceptanceByUser } from "../useCases/term/FindTermAcceptanceByUser/FindTermAcceptanceByUser";
 import { deactivateAcceptance } from "../useCases/term/DeactivateAcceptance/DeactivateAcceptance";
 import { findTermConditionByTerm } from "../useCases/term/FindTermConditionByTerm/FindTermConditionByTerm";
+import { findTermConditionById } from "../useCases/term/FindTermConditionById/FindTermConditionById";
+
 const router = Router();
 
 router.post('/createTerm', (request: Request, response: Response) => {
@@ -29,6 +31,10 @@ router.post('/findTermConditionByTerm', (request: Request, response: Response) =
 router.post('/deactivateAcceptance', (request: Request, response: Response) => {
     return deactivateAcceptance.deactivateAcceptance(request, response);
 });
+router.post('/findTermConditionById', (request: Request, response: Response) => {
+    return findTermConditionById.findTermConditionById(request, response);
+});
+
 
 
 export default router;

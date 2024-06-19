@@ -1,24 +1,24 @@
 export default class Term {
 
     public id: number;
-    public content: string;
-    public effectiveDate: Date;
+    public description: string;
+    public title: string;
 
-    constructor (effectiveDate: Date, content: string, id?: number) {
+    constructor (title: string, description: string, id?: number) {
         id? this.id = id : this.id = -1;
-        this.effectiveDate = effectiveDate;
-        this.content = content;
+        this.title = title;
+        this.description = description;
     }
 
-    public geteffectiveDate(): Date {
-        return this.effectiveDate;
+    public gettitle(): string {
+        return this.title;
     }
 
     public getId(): number {
         return this.id;
     }
 
-    public getcontent(): string {
-        return this.content;
+    public getdescription(): string {
+        return this.description;
     }
 }

@@ -1,7 +1,7 @@
 import { Model, Table, Column, DataType, ForeignKey, BelongsTo, HasMany } from "sequelize-typescript";
 import Term from "./Terms";
 import User from "./User";
-import TermConditionAcceptance from "./TermConditionAcceptance";
+import TermCondition from "./TermCondition";
 
 @Table({ tableName: "TermAcceptance", timestamps: true })
 export default class TermAcceptance extends Model {
@@ -16,8 +16,15 @@ export default class TermAcceptance extends Model {
     @Column({ type: DataType.INTEGER, allowNull: false })
     termId!: number;
 
+    @ForeignKey(() => TermCondition)
+    @Column({ type: DataType.INTEGER, allowNull: false })
+    conditionId!: number;
+
     @Column({ type: DataType.BOOLEAN, allowNull: false })
     accepted!: boolean;
+
+    @Column({ type: DataType.BOOLEAN, allowNull: false })
+    active!: boolean;
 
     @BelongsTo(() => User)
     user!: User;
@@ -25,6 +32,6 @@ export default class TermAcceptance extends Model {
     @BelongsTo(() => Term)
     term!: Term;
 
-    @HasMany(() => TermConditionAcceptance)
-    conditionAcceptances!: TermConditionAcceptance[];
+    @BelongsTo(() => TermCondition)
+    condition!: TermCondition;
 }

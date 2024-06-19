@@ -8,7 +8,8 @@ import TermAcceptance from '../../model/classes/TermAcceptance';
 const TermsComponent: React.FC = () => {
   const [terms, setTerms] = useState<Term[]>([]);
   const [acceptedTerms, setAcceptedTerms] = useState<Set<number>>(new Set());
-  const [termConditions, setTermConditions] = useState<{ [key: number]: string[] }>({});
+  const [termConditions, setTermConditions] = useState<{ [key: number]: any[] }>({});
+  const [checkedConditions, setCheckedConditions] = useState<{ [key: number]: boolean }>({});
   const session = Session();
   const idUser = session.id;
 
@@ -16,7 +17,6 @@ const TermsComponent: React.FC = () => {
     const fetchTerms = async () => {
       try {
         const response = await TermService.findAllTerms();
-        console.log(response)
         setTerms(response.data);
         response.data.forEach((term: { id: number; }) => fetchTermConditions(term.id));
       } catch (error) {
@@ -30,10 +30,17 @@ const TermsComponent: React.FC = () => {
   const fetchTermConditions = async (termId: number) => {
     try {
       const response = await TermService.findTermConditionByTerm(termId);
-      console.log(response)
       setTermConditions(prevState => ({
         ...prevState,
         [termId]: response.data,
+      }));
+      const defaultConditions = response.data.reduce((acc: { [key: number]: boolean }, condition: { id: number; }) => {
+        acc[condition.id] = false;
+        return acc;
+      }, {});
+      setCheckedConditions(prevState => ({
+        ...prevState,
+        ...defaultConditions,
       }));
     } catch (error) {
       console.error(`Error fetching conditions for term ${termId}:`, error);
@@ -50,19 +57,39 @@ const TermsComponent: React.FC = () => {
     }
 
     setAcceptedTerms(newAcceptedTerms);
-    console.log(newAcceptedTerms);
+    // console.log(newAcceptedTerms);
+  };
+
+  const handleConditionChange = (conditionId: number) => {
+    setCheckedConditions(prevState => ({
+      ...prevState,
+      [conditionId]: !prevState[conditionId],
+    }));
   };
 
   const allTermsAccepted = terms.every(term => acceptedTerms.has(term.id));
 
   const handleAcceptTerms = async () => {
-    await TermService.deactivateAcceptance(idUser);
-    acceptedTerms.forEach(async termId => {
-      console.log(termId);
-      // await TermService.createTermAcceptance(termId, idUser);
-    });
-    window.location.href = "/";
-  };
+      let conditionAcceptanceArray = [];
+      let idToResponseMap: { [key: string]: number } = {}; // Definindo um tipo para o objeto
+      await TermService.deactivateAcceptance(session.id)
+      for (const i in checkedConditions) {
+          const response = await TermService.findTermConditionById(Number(i));
+          console.log(response)
+          await TermService.createTermAcceptance(response.data.termId, session.id, checkedConditions[i], Number(i));
+      }
+  
+      console.log(idToResponseMap); // Aqui você terá o objeto desejado
+
+
+    // const response = await TermService.findTermConditionById(Number(Object.keys(checkedConditions)[0]));
+    // const termId = response.data.termId;
+    // console.log(termId, session.id, true, conditionAcceptanceArray)
+    
+
+    // window.location.href = "/";
+};
+
 
   const revokeTerms = async () => {
     await TermService.deactivateAcceptance(idUser);
@@ -77,21 +104,24 @@ const TermsComponent: React.FC = () => {
       <h5>Caso queira revogar todos os termos aceitos basta clicar no botão "Revogar termos"</h5>
       {terms.map(term => (
         <div key={term.id} className={Style.term}>
-          <input
-            className={Style.checkbox_input}
-            type="checkbox"
-            id={`term-${term.id}`}
-            checked={acceptedTerms.has(term.id)}
-            onChange={() => handleAcceptTerm(term.id)}
-          />
-          <label htmlFor={`term-${term.id}`}>{term.content}</label>
+          <label htmlFor={`term-${term.id}`}>
+            {typeof term.description === 'string' ? term.description : JSON.stringify(term.description)}
+          </label>
           {termConditions[term.id] && (
             <ul>
-              {termConditions[term.id].map((condition, index) => (
-                
-                <li key={index}>{condition}</li>
+              {termConditions[term.id].map((condition: { id: number; conditionText: string }) => (
+                <li key={condition.id}>
+                  <input
+                    type="checkbox"
+                    id={`condition-${condition.id}`}
+                    checked={checkedConditions[condition.id]  || false}
+                    onChange={() => handleConditionChange(condition.id)}
+                  />
+                  <label htmlFor={`condition-${condition.id}`}>
+                    {condition.conditionText}
+                  </label>
+                </li>
               ))}
-              <h1>adlo</h1>
             </ul>
           )}
         </div>

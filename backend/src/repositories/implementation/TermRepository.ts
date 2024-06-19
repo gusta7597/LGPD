@@ -2,7 +2,6 @@ import ITermRepository from "../ITermRepository";
 import Terms from "../../model/Terms";
 import TermAcceptance from "../../model/TermAcceptance";
 import TermCondition from "../../model/TermCondition";
-import TermConditionAcceptance from "../../model/TermConditionAcceptance";
 
 export default class TermRepository implements ITermRepository {
   // create user
@@ -22,12 +21,13 @@ export default class TermRepository implements ITermRepository {
   findAllTerms(): Promise<Terms[]> {
     return Terms.findAll();
   }
-  async saveTermAcceptance(termId: number, userId: number, accepted: boolean, conditionAcceptances: TermConditionAcceptance[]): Promise<TermAcceptance> {
-    
+  async saveTermAcceptance(termId: number, userId: number, accepted: boolean, conditionId:number): Promise<TermAcceptance> {
     return TermAcceptance.create({
       userId: userId,
       termId: termId,
+      conditionId:conditionId,
       accepted:accepted,
+      active: true
     });
   }
   findAllTermAcceptance(): Promise<TermAcceptance[]> {
@@ -41,25 +41,20 @@ export default class TermRepository implements ITermRepository {
   findTermAcceptanceById(acceptanceId: number): Promise<TermAcceptance | null> {
     return TermAcceptance.findOne({ where: { id: acceptanceId, accepted:true } });
   }
-
-  async saveTermConditionAcceptance(termAcceptanceId:number, termConditionId: number, accepted: boolean){
-    return TermConditionAcceptance.create({
-      termAcceptanceId:termAcceptanceId,
-      termConditionId:termConditionId,
-      accepted:accepted
-  })
-  }
   
   findTermConditionByTerm(termId:number): Promise<TermCondition[]> {
     return TermCondition.findAll({ where: { termId: termId } });
   }
 
+  findTermConditionById(id:number): Promise<TermCondition | null> {
+    return TermCondition.findOne({ where: { id: id } });
+  }
   findTermConditionAcceptanceByAcceptance(termAcceptanceId:number): Promise<TermCondition[]> {
     return TermCondition.findAll({ where: { termAcceptanceId: termAcceptanceId } });
   }
 
   async deactivateAcceptance(userId:number): Promise<Number>{
-    const response = await TermAcceptance.update({accepted:false}, {where:{userId:userId}}) 
+    const response = await TermAcceptance.update({active:false}, {where:{userId:userId}}) 
     return response[0]
   }
 

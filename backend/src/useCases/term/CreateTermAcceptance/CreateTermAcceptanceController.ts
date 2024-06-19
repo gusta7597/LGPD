@@ -9,10 +9,10 @@ export class CreateTermAcceptanceController {
 
     async create(req: Request, res: Response): Promise<Response> {
 
-        let { userId, termId, accepted, condictionAcceptance} = req.body;
+        let { userId, termId, accepted, conditionId} = req.body;
         
         try {
-            await this.createTermAcceptanceUC.execute({ userId, termId, accepted, condictionAcceptance  });
+            await this.createTermAcceptanceUC.execute({ userId, termId, accepted, conditionId  });
 
             return res.status(200).json({
                 Ok: true,
