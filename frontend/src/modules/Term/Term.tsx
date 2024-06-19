@@ -79,15 +79,9 @@ const TermsComponent: React.FC = () => {
           await TermService.createTermAcceptance(response.data.termId, session.id, checkedConditions[i], Number(i));
       }
   
-      console.log(idToResponseMap); // Aqui você terá o objeto desejado
+      console.log(idToResponseMap);
 
-
-    // const response = await TermService.findTermConditionById(Number(Object.keys(checkedConditions)[0]));
-    // const termId = response.data.termId;
-    // console.log(termId, session.id, true, conditionAcceptanceArray)
-    
-
-    // window.location.href = "/";
+    window.location.href = "/";
 };
 
 
@@ -127,7 +121,6 @@ const TermsComponent: React.FC = () => {
         </div>
       ))}
       <button className={Style.accept_button} onClick={handleAcceptTerms}>Aceitar Termos</button>
-      <div><button className={Style.accept_button} onClick={revokeTerms}>Revogar termos</button></div>
     </div>
   );
 };

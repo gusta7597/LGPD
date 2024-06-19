@@ -20,7 +20,6 @@
     "active": "true"
 }
 ### http://localhost:3000/term/createTerm
-{
     {
     "title": "Termo de Uso",
     "description": "Este é o termo.",
@@ -35,5 +34,4 @@
             "conditionText": "O para fins ilegais."
         }
     ]
-}
 }
