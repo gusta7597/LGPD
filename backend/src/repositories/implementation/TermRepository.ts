@@ -31,7 +31,7 @@ export default class TermRepository implements ITermRepository {
     });
   }
   findAllTermAcceptance(): Promise<TermAcceptance[]> {
-    return TermAcceptance.findAll();
+    return TermAcceptance.findAll({ where: { active:true } });
   }
 
   findTermAcceptanceByUser(userId: number): Promise<TermAcceptance | null> {
