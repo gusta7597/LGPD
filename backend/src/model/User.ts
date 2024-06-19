@@ -1,5 +1,6 @@
-import { Model, Table, Column, DataType, HasOne } from "sequelize-typescript";
+import { Model, Table, Column, DataType, HasMany, HasOne } from "sequelize-typescript";
 import Profile from "./Profile";
+import TermAcceptance from "./TermAcceptance";
 
 @Table({ tableName: "User", timestamps: true })
 export default class User extends Model {
@@ -26,4 +27,7 @@ export default class User extends Model {
 
     @HasOne(() => Profile, { constraints: false, onDelete: 'cascade' })
     profile!: Profile;
+
+    @HasMany(() => TermAcceptance)
+    termAcceptances!: TermAcceptance[];
 }

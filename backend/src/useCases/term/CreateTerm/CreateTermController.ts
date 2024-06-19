@@ -9,10 +9,10 @@ export class CreateTermController {
 
     async create(req: Request, res: Response): Promise<Response> {
 
-        let { content, effectiveDate } = req.body;
+        let { title, description, conditions } = req.body;
         
         try {
-            await this.createTermUC.execute({ content, effectiveDate });
+            await this.createTermUC.execute({ title, description, conditions});
 
             return res.status(200).json({
                 Ok: true,
@@ -20,6 +20,7 @@ export class CreateTermController {
                 Data: []
             });
         } catch (err: any) {
+            // console.log(title,description,conditions)
             return res.status(400).json({
                 Ok: false,
                 Message: err,
