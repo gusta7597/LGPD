@@ -4,7 +4,5 @@ import SendSecurityEmailUC from "./SendSecurityEmailUC";
 
 
 export const sendSecurityEmail = new SendSecurityEmailController(
-    new SendSecurityEmailUC(
-        new UserRepository()
-    )
+    new SendSecurityEmailUC()
 );

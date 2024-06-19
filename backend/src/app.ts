@@ -7,7 +7,6 @@ import AuthRoutes from './routes/AuthRoutes';
 import cors from 'cors';
 import CheckToken from './routes/utils/CheckToken';
 import TermRoutes from './routes/TermRoutes'
-import './dumpScheduler';
 
 export const app = express();
 
